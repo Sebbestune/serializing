@@ -13,7 +13,7 @@ namespace SerializeToFile
     {
         public static async Task Main()
         {
-            WeatherForecast[] weatherForecast = {new WeatherForecast
+            List<WeatherForecast> weatherForecast = new List<WeatherForecast>() {new WeatherForecast
             {
                 Date = DateTime.Parse("2019-08-01"),
                 TemperatureCelsius = 25,
