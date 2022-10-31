@@ -13,12 +13,22 @@ namespace SerializeToFile
     {
         public static async Task Main()
         {
-            var weatherForecast = new WeatherForecast
+            WeatherForecast[] weatherForecast = {new WeatherForecast
             {
                 Date = DateTime.Parse("2019-08-01"),
                 TemperatureCelsius = 25,
                 Summary = "Hot"
-            };
+            }, new WeatherForecast
+            {
+                Date = DateTime.Parse("2019-08-02"),
+                TemperatureCelsius = 12,
+                Summary = "Medium"
+            }, new WeatherForecast
+            {
+                Date = DateTime.Parse("2019-08-03"),
+                TemperatureCelsius = -2,
+                Summary = "Cold"
+            } };
 
             string fileName = "WeatherForecast.json";
             using FileStream createStream = File.Create(fileName);
