@@ -11,7 +11,7 @@ namespace SerializeToFile
 
     public class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             var weatherForecast = new WeatherForecast
             {
@@ -20,9 +20,10 @@ namespace SerializeToFile
                 Summary = "Hot"
             };
 
-            string fileName = "WeatherForecast.json";                       // Skapa JSON fil
-            string jsonString = JsonSerializer.Serialize(weatherForecast); //Serialisering
-            File.WriteAllText(fileName, jsonString);                        //Skriv till fil
+            string fileName = "WeatherForecast.json";
+            using FileStream createStream = File.Create(fileName);
+            await JsonSerializer.SerializeAsync(createStream, weatherForecast);
+            await createStream.DisposeAsync();
 
             Console.WriteLine(File.ReadAllText(fileName));
         }
