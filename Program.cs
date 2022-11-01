@@ -33,9 +33,9 @@ namespace SerializeToFile
             WeatherForecast? gettingWeatherForecast =
                 JsonSerializer.Deserialize<WeatherForecast>(jsonString);
 
-            Console.WriteLine($"Date: {weatherForecast?.Date}");
-            Console.WriteLine($"TemperatureCelsius: {weatherForecast?.TemperatureCelsius}");
-            Console.WriteLine($"Summary: {weatherForecast?.Summary}");
+            Console.WriteLine($"Date: {gettingWeatherForecast?.Date}");
+            Console.WriteLine($"TemperatureCelsius: {gettingWeatherForecast?.TemperatureCelsius}");
+            Console.WriteLine($"Summary: {gettingWeatherForecast?.Summary}");
         }
     }
 }
