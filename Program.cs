@@ -36,6 +36,14 @@ namespace SerializeToFile
             await createStream.DisposeAsync();
 
             Console.WriteLine(File.ReadAllText(fileName));
+
+            Console.WriteLine("---------DESERIALISERA LISTA---------");
+
+            using FileStream openStream = File.OpenRead(fileName);
+            List<WeatherForecast>? getWeatherForecast =
+                await JsonSerializer.DeserializeAsync<List<WeatherForecast>>(openStream);
+
+            getWeatherForecast.ForEach(forecast => Console.WriteLine($"Date: {forecast.Date}, {forecast.Summary}, {forecast.TemperatureCelsius}"));
         }
     }
 }
