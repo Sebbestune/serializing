@@ -20,11 +20,22 @@ namespace SerializeToFile
                 Summary = "Hot"
             };
 
+            Console.WriteLine("-------SERIALISATION----------");
+
             string fileName = "WeatherForecast.json";                       // Skapa JSON fil
             string jsonString = JsonSerializer.Serialize(weatherForecast); //Serialisering
             File.WriteAllText(fileName, jsonString);                        //Skriv till fil
 
             Console.WriteLine(File.ReadAllText(fileName));
+
+            Console.WriteLine("-------DESERIALISATION----------");
+
+            WeatherForecast? gettingWeatherForecast =
+                JsonSerializer.Deserialize<WeatherForecast>(jsonString);
+
+            Console.WriteLine($"Date: {weatherForecast?.Date}");
+            Console.WriteLine($"TemperatureCelsius: {weatherForecast?.TemperatureCelsius}");
+            Console.WriteLine($"Summary: {weatherForecast?.Summary}");
         }
     }
 }
